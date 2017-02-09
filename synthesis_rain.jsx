@@ -1,11 +1,11 @@
 ﻿#target photoshop
 //=============================================================================
 // modify to the proper location
-var strImageFolder = "D:/Workspace/NDrive/170206_[JS]_HJ_Rain_photoshop_script";
-var nImageStart = 1;
-var nImageEnd = 6;
-var numRainImages = 10;
-//var strImageName = "000001.jpg";
+var strImageFolder = "D:/Workspace/Dataset/HJ_Rain/all";
+var strResultFolder = "D:/Workspace/Dataset/HJ_Rain/result";
+var nImageStart = 2001;
+var nImageEnd = 2907;
+var numRainImages = 20;
 //=============================================================================
 
 var gParamConfiguration = {
@@ -18,7 +18,7 @@ var gParamConfiguration = {
     },
     motionBlur: {
         angle:    {min: 45, max: 135, step: 30},
-        distance: {min: 30, max: 200,  step: 20}
+        distance: {min: 30, max: 70,  step: 20}
     },
     levelAdjust2: {
         start: {min: 60,  max: 90,  step: 10},
@@ -47,7 +47,7 @@ for (var i = nImageStart; i <= nImageEnd; i++)
         alert("There is a no file with number " + i.toString());
         break;
     }
-    generateRainImageSetFromSingleImage(strImageFolder, strImageName, numRainImages);    
+    generateRainImageSetFromSingleImage(strImageFolder, strImageName, numRainImages, strResultFolder);    
 }
 
 //=============================================================================
@@ -224,7 +224,7 @@ function synthesizeRain(
 };
 
 //=============================================================================
-function generateRainImageSetFromSingleImage(_strImageFolder, _strImageName, _numVariations)
+function generateRainImageSetFromSingleImage(_strImageFolder, _strImageName, _numVariations, _strResultFolder)
 {
     var strImageNameParts = _strImageName.split(".");
     var strImagePath = _strImageFolder + "/" + _strImageName;
@@ -295,7 +295,7 @@ function generateRainImageSetFromSingleImage(_strImageFolder, _strImageName, _nu
         var strSaveName = strImageNameParts[0] + "_rain_" + pad(variationIndex, 4, '0') + ".jpg";
         var saveFileObject = {
             fileName:strSaveName,
-            path:_strImageFolder,
+            path:_strResultFolder,
             fileType:'jpg'
         };
         saveAsFileType(saveFileObject);        
