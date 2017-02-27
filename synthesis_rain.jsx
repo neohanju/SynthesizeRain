@@ -1,16 +1,16 @@
 ﻿#target photoshop
 //=============================================================================
 // modify to the proper location
-var strImageFolder = "D:/Workspace/Dataset/HJ_Rain/all";
-var strResultFolder = "D:/Workspace/Dataset/HJ_Rain/result";
-var nImageStart = 2001;
+var strImageFolder = "D:/Workspace/GitHub/SynthesizeRain";
+var strResultFolder = "D:/Workspace/GitHub/SynthesizeRain/result";
+var nImageStart = 0;
 var nImageEnd = 2907;
-var numRainImages = 20;
+var numRainImages = 3;
 //=============================================================================
 
 var gParamConfiguration = {
     GaussianBlur: {
-        radius: {min: 0.4, max: 0.6, step: 0.1}
+        radius: {min: 0.5, max: 2.0, step: 0.5}
     },
     levelAdjust1: {
         start: {min: 100, max: 150, step: 10},
@@ -18,11 +18,11 @@ var gParamConfiguration = {
     },
     motionBlur: {
         angle:    {min: 45, max: 135, step: 30},
-        distance: {min: 30, max: 70,  step: 20}
+        distance: {min: 10, max: 70,  step: 20}
     },
     levelAdjust2: {
         start: {min: 60,  max: 90,  step: 10},
-        end:   {min: 170, max: 200, step: 10}
+        end:   {min: 130, max: 180, step: 10}
     }
 }
 //=============================================================================
